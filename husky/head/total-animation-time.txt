@@ -1,0 +1,32 @@
+Total head animation time:
+EYE:
+1. delay: 2100, duration 700
+2. delay 1800, duration 800
+3. delay 1300, duration 700
+4. duration 2600
+
+total: 10000
+
+FACE/NOSE:
+
+1. delay: 2100, duration 700
+2. delay 1800, duration 800
+3. delay 1000, duration 700
+4. duration 2900
+
+total: 10000
+
+
+BODY:
+1. delay 1000, dur: 800
+2. dur: 700
+3. delay 1000, dur: 700
+4. dur: 800
+
+total: 5000
+
+HEAD:
+delay: 1000
+dur: 9000
+
+total: 10000
