@@ -43,7 +43,7 @@ const Body = () => {
           useNativeDriver: true,
         }),
       ]),
-    );
+    ).start();
   }, []);
   return (
     <View>
