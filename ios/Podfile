@@ -8,6 +8,8 @@ target 'Poosheck' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-location', :path => '../node_modules/react-native-location'
+
   target 'PoosheckTests' do
     inherit! :complete
     # Pods for testing

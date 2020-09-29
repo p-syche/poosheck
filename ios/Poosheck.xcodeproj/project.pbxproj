@@ -20,6 +20,7 @@
 		839163256D73F43756D4FDC9 /* libPods-Poosheck-PoosheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1567C4E8434F84D758A9F65D /* libPods-Poosheck-PoosheckTests.a */; };
 		A4946F2F8F04C669C2680DED /* libPods-Poosheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D092E892E55D2F65CF95E3 /* libPods-Poosheck.a */; };
 		E6383C8155E81F88B2A3DC9E /* libPods-Poosheck-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445BDEC9764182196084B78E /* libPods-Poosheck-tvOS.a */; };
+		EAE92CC825234A0A007669DD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE92CC725234A0A007669DD /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		907CEBE6E76DD43FD1770B54 /* Pods-Poosheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck/Pods-Poosheck.debug.xcconfig"; sourceTree = "<group>"; };
 		D322F295BBCFC3DEFD5AB314 /* Pods-Poosheck-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOS/Pods-Poosheck-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D32BDA5ACA1E1B0E9348BBB7 /* Pods-Poosheck-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOSTests/Pods-Poosheck-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAE92CC725234A0A007669DD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE92CC825234A0A007669DD /* CoreLocation.framework in Frameworks */,
 				A4946F2F8F04C669C2680DED /* libPods-Poosheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +142,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAE92CC725234A0A007669DD /* CoreLocation.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				79D092E892E55D2F65CF95E3 /* libPods-Poosheck.a */,
@@ -194,7 +198,6 @@
 				D32BDA5ACA1E1B0E9348BBB7 /* Pods-Poosheck-tvOSTests.debug.xcconfig */,
 				7B16CC0F402246779E851D12 /* Pods-Poosheck-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
