@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {maneStyles} from '../../assets/husky_styles';
 import {fullRelativeHeight} from '../../assets/style_bits';
 
 const Mane = () => {
-  const [moveUpDownAnim] = useState(new Animated.Value(0));
+  const moveUpDownAnim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     Animated.loop(
       Animated.sequence([

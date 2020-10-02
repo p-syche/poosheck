@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {tailStyles} from '../../assets/husky_styles';
 import {fullRelativeHeight, fullRelativeWidth} from '../../assets/style_bits';
 
 const Tail = () => {
-  const [moveTailAnimation] = useState(new Animated.Value(0));
+  const moveTailAnimation = useRef(new Animated.Value(0)).current;
   const spin = moveTailAnimation.interpolate({
     inputRange: [
       0,

@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {headStyles} from '../../assets/husky_styles_head';
 
 const Winking = () => {
-  const [winkAnim] = useState(new Animated.Value(1));
+  const winkAnim = useRef(new Animated.Value(1)).current;
   useEffect(() => {
     Animated.loop(
       Animated.sequence([

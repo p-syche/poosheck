@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {headStyles} from '../../assets/husky_styles_head';
 
 const Ear = () => {
-  const [moveHeadRightLeftAnim] = useState(new Animated.Value(0));
+  const moveHeadRightLeftAnim = useRef(new Animated.Value(0)).current;
   const shakeEar = moveHeadRightLeftAnim.interpolate({
     inputRange: [0, 10, 20, 30, 40, 50, 60, 70],
     outputRange: [

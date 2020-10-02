@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {Animated, Easing, View} from 'react-native';
 import {headStyles} from '../../assets/husky_styles_head';
 import {animationTimingFunction} from '../../assets/style_bits';
@@ -6,7 +6,7 @@ import Ear from './ear';
 import Face from './face';
 
 const Head = () => {
-  const [moveHeadRightLeftAnim] = useState(new Animated.Value(0));
+  const moveHeadRightLeftAnim = useRef(new Animated.Value(0)).current;
   const wobble = moveHeadRightLeftAnim.interpolate({
     inputRange: [
       0,
