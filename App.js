@@ -4,9 +4,11 @@ import {StyleSheet, View, Text, Modal, TouchableHighlight} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import {fullRelativeWidth, skyColor} from './assets/style_bits';
+import {openWeatherRequest} from './constants/open-weather';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [currentTemp, setCurrentTemp] = useState(20);
 
   useEffect(() => {
     RNLocation.configure({
@@ -62,9 +64,16 @@ export default function App() {
 
   const getLatestLocation = () => {
     RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
-      console.log('what is the lcoation now?', latestLocation);
       if (latestLocation === null) {
         setModalVisible(true);
+        openWeatherRequest(54.44, 18.57);
+      } else {
+        openWeatherRequest(
+          latestLocation.latitude,
+          latestLocation.longitude,
+        ).then((response) => {
+          setCurrentTemp(response.main.temp);
+        });
       }
     });
   };
@@ -104,6 +113,10 @@ export default function App() {
           </View>
         </View>
       </Modal>
+      <View style={{position: 'absolute', top: 50}}>
+        <Text style={{fontSize: 24}}>This will display the temp</Text>
+        <Text style={{fontSize: 24}}>{currentTemp}</Text>
+      </View>
       <Mountain />
       <Husky />
     </View>
