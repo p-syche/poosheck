@@ -11,7 +11,6 @@ export const openWeatherRequest = (latitude, longitude) => {
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log('hey ho Jason!', json);
       return json;
     })
     .catch((error) => {

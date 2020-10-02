@@ -9,6 +9,9 @@ import {openWeatherRequest} from './constants/open-weather';
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentTemp, setCurrentTemp] = useState(20);
+  const [feelsLike, setfeelsLike] = useState(20);
+  const [tempMin, setTempMin] = useState(20);
+  const [tempMax, setTempMax] = useState(20);
 
   useEffect(() => {
     RNLocation.configure({
@@ -73,6 +76,9 @@ export default function App() {
           latestLocation.longitude,
         ).then((response) => {
           setCurrentTemp(response.main.temp);
+          setfeelsLike(response.main.feels_like);
+          setTempMax(response.main.temp_max);
+          setTempMin(response.main.temp_min);
         });
       }
     });
@@ -80,13 +86,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-        }}>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.modalView}>
           <Text style={[styles.modalText, styles.modalHeader]}>
             Hello There!
@@ -114,8 +114,15 @@ export default function App() {
         </View>
       </Modal>
       <View style={{position: 'absolute', top: 50}}>
-        <Text style={{fontSize: 24}}>This will display the temp</Text>
-        <Text style={{fontSize: 24}}>{currentTemp}</Text>
+        <Text style={{fontSize: 24}}>
+          Current temperature: {currentTemp}&deg;C
+        </Text>
+        <Text style={{fontSize: 24}}>Feels like: {feelsLike}&deg;C</Text>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <Text style={{fontSize: 16}}>Min temp: {tempMin}&deg;C</Text>
+          <Text style={{fontSize: 16}}> | </Text>
+          <Text style={{fontSize: 16}}>Max temp: {tempMax}&deg;C</Text>
+        </View>
       </View>
       <Mountain />
       <Husky />
