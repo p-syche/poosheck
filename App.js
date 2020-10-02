@@ -69,7 +69,13 @@ export default function App() {
     RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
       if (latestLocation === null) {
         setModalVisible(true);
-        openWeatherRequest(54.44, 18.57);
+        openWeatherRequest(54.44, 18.57).then((response) => {
+          console.log('i should be here, right???');
+          setCurrentTemp(response.main.temp);
+          setfeelsLike(response.main.feels_like);
+          setTempMax(response.main.temp_max);
+          setTempMin(response.main.temp_min);
+        });
       } else {
         openWeatherRequest(
           latestLocation.latitude,
