@@ -39,7 +39,7 @@ export default function App() {
     RNLocation.checkPermission({
       ios: 'whenInUse', // or 'always'
       android: {
-        detail: 'coarse', // or 'fine'
+        detail: 'fine', // or 'fine'
       },
     }).then((currentPermission) => {
       if (currentPermission === false) {
@@ -65,26 +65,26 @@ export default function App() {
     }).then(getLatestLocation());
   };
 
+  const setTemperatures = (response) => {
+    setCurrentTemp(response.main.temp);
+    setfeelsLike(response.main.feels_like);
+    setTempMax(response.main.temp_max);
+    setTempMin(response.main.temp_min);
+  };
+
   const getLatestLocation = () => {
     RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
       if (latestLocation === null) {
         setModalVisible(true);
         openWeatherRequest(54.44, 18.57).then((response) => {
-          console.log('i should be here, right???');
-          setCurrentTemp(response.main.temp);
-          setfeelsLike(response.main.feels_like);
-          setTempMax(response.main.temp_max);
-          setTempMin(response.main.temp_min);
+          setTemperatures(response);
         });
       } else {
         openWeatherRequest(
           latestLocation.latitude,
           latestLocation.longitude,
         ).then((response) => {
-          setCurrentTemp(response.main.temp);
-          setfeelsLike(response.main.feels_like);
-          setTempMax(response.main.temp_max);
-          setTempMin(response.main.temp_min);
+          setTemperatures(response);
         });
       }
     });
