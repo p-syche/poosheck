@@ -32,10 +32,10 @@ export default function App() {
       headingOrientation: 'portrait',
       pausesLocationUpdatesAutomatically: false,
       showsBackgroundLocationIndicator: false,
-    });
+    }).then(() => checkPermission());
   }, []);
 
-  useEffect(() => {
+  const checkPermission = () => {
     RNLocation.checkPermission({
       ios: 'whenInUse', // or 'always'
       android: {
@@ -48,7 +48,7 @@ export default function App() {
         getLatestLocation();
       }
     });
-  }, []);
+  };
 
   const requestPermission = () => {
     RNLocation.requestPermission({
@@ -62,7 +62,7 @@ export default function App() {
           buttonNegative: 'Cancel',
         },
       },
-    }).then(getLatestLocation());
+    }).then(() => getLatestLocation());
   };
 
   const setTemperatures = (response) => {
