@@ -8,4 +8,5 @@ export const groundColor = '#dbe8f7';
 export const huskyBodyColor = '#444';
 export const tailColor = '#2c2f36';
 export const skyColor = '#4F8EDB';
+export const darkSkyColor = '#39649C';
 export const animationTimingFunction = Easing.bezier(0.645, 0.045, 0.355, 1);

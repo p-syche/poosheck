@@ -4,9 +4,10 @@ import {StyleSheet, View, Text, Modal, TouchableHighlight} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
-import {fullRelativeWidth, skyColor} from './assets/style_bits';
+import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
-import OpenAppSettings from 'react-native-app-settings';
+import DenyLocationModal from './deny-location-modal';
+import {getSunriseAndSunsetTime} from './constants/settings';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -14,6 +15,7 @@ export default function App() {
   const [feelsLike, setfeelsLike] = useState(20);
   const [tempMin, setTempMin] = useState(20);
   const [tempMax, setTempMax] = useState(20);
+  const [isThemeLight, setIsThemeLight] = useState(skyColor);
 
   useEffect(() => {
     RNLocation.configure({
@@ -76,11 +78,16 @@ export default function App() {
     });
   };
 
-  const setTemperatures = (response) => {
+  const setTemperatures = (response, latitude, longitude) => {
     setCurrentTemp(response.main.temp);
     setfeelsLike(response.main.feels_like);
     setTempMax(response.main.temp_max);
     setTempMin(response.main.temp_min);
+    if (getSunriseAndSunsetTime(latitude, longitude) === 'day') {
+      setIsThemeLight(true);
+    } else {
+      setIsThemeLight(false);
+    }
   };
 
   const getLatestLocation = () => {
@@ -88,49 +95,34 @@ export default function App() {
       if (latestLocation === null) {
         setModalVisible(true);
         openWeatherRequest(54.44, 18.57).then((response) => {
-          setTemperatures(response);
+          setTemperatures(response, 54.44, 18.57);
         });
       } else {
         openWeatherRequest(
           latestLocation.latitude,
           latestLocation.longitude,
         ).then((response) => {
-          setTemperatures(response);
+          setTemperatures(
+            response,
+            latestLocation.latitude,
+            latestLocation.longitude,
+          );
         });
       }
     });
   };
 
+  const displaySkyColor = () => {
+    if (isThemeLight) {
+      return skyColor;
+    } else {
+      return darkSkyColor;
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={styles.modalView}>
-          <Text style={[styles.modalText, styles.modalHeader]}>
-            Hello There!
-          </Text>
-          <Text style={styles.modalText}>
-            We were unable to aquire your current location. You will see a
-            weather forecast for the city of Sopot, Poland. Thank you!
-          </Text>
-          <View style={styles.modalButtons}>
-            <TouchableHighlight
-              style={{...styles.openButton, backgroundColor: '#A3ADBB'}}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}>
-              <Text style={styles.textStyle}>That's cool</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={{...styles.openButton, backgroundColor: skyColor}}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-                OpenAppSettings.open();
-              }}>
-              <Text style={styles.textStyle}>Change my settings</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </Modal>
+    <View style={{...styles.container, backgroundColor: displaySkyColor()}}>
+      <DenyLocationModal />
       <Temperature
         currentTemp={currentTemp}
         tempMax={tempMax}
@@ -146,49 +138,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4F8EDB',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  modalButtons: {
-    display: 'flex',
-    width: fullRelativeWidth,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  modalHeader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 5,
   },
 });

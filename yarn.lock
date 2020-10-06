@@ -6447,6 +6447,11 @@ sudo-prompt@^9.0.0:
   resolved "https://registry.yarnpkg.com/sudo-prompt/-/sudo-prompt-9.2.1.tgz#77efb84309c9ca489527a4e749f287e6bdd52afd"
   integrity sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==
 
+sunrise-sunset-js@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/sunrise-sunset-js/-/sunrise-sunset-js-2.1.2.tgz#e6ac399aa82276063759cb95f775d009ddf2367a"
+  integrity sha512-uBPa8O+yzum8H9eipethaVszSKP0cWiyTU/KoSfikkqaCggDRJJ6YT8gLwExVFhVSj+bO070H9JZjCxLPqw0aA==
+
 supports-color@^5.3.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
