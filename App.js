@@ -3,6 +3,7 @@ import RNLocation from 'react-native-location';
 import {StyleSheet, View, Text, Modal, TouchableHighlight} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
+import Temperature from './weather/temperature';
 import {fullRelativeWidth, skyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 
@@ -62,7 +63,16 @@ export default function App() {
           buttonNegative: 'Cancel',
         },
       },
-    }).then(() => getLatestLocation());
+    }).then((currentPermission) => {
+      if (currentPermission === false) {
+        setModalVisible(true);
+        openWeatherRequest(54.44, 18.57).then((response) => {
+          setTemperatures(response);
+        });
+      } else {
+        getLatestLocation();
+      }
+    });
   };
 
   const setTemperatures = (response) => {
@@ -119,17 +129,12 @@ export default function App() {
           </View>
         </View>
       </Modal>
-      <View style={{position: 'absolute', top: 50}}>
-        <Text style={{fontSize: 24}}>
-          Current temperature: {currentTemp}&deg;C
-        </Text>
-        <Text style={{fontSize: 24}}>Feels like: {feelsLike}&deg;C</Text>
-        <View style={{display: 'flex', flexDirection: 'row'}}>
-          <Text style={{fontSize: 16}}>Min temp: {tempMin}&deg;C</Text>
-          <Text style={{fontSize: 16}}> | </Text>
-          <Text style={{fontSize: 16}}>Max temp: {tempMax}&deg;C</Text>
-        </View>
-      </View>
+      <Temperature
+        currentTemp={currentTemp}
+        tempMax={tempMax}
+        tempMin={tempMin}
+        feelsLike={feelsLike}
+      />
       <Mountain />
       <Husky />
     </View>
