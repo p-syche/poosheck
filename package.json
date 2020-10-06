@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.3",
+    "react-native-app-settings": "^2.0.1",
     "react-native-location": "^2.5.0",
     "react-native-svg": "^12.1.0"
   },

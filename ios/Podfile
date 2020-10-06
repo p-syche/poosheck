@@ -10,6 +10,8 @@ target 'Poosheck' do
 
   pod 'react-native-location', :path => '../node_modules/react-native-location'
 
+  pod 'RNOpenAppSettings', :path => '../node_modules/react-native-app-settings'
+
   target 'PoosheckTests' do
     inherit! :complete
     # Pods for testing

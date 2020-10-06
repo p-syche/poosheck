@@ -6,6 +6,7 @@ import Husky from './husky';
 import Temperature from './weather/temperature';
 import {fullRelativeWidth, skyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
+import OpenAppSettings from 'react-native-app-settings';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -123,6 +124,7 @@ export default function App() {
               style={{...styles.openButton, backgroundColor: skyColor}}
               onPress={() => {
                 setModalVisible(!modalVisible);
+                OpenAppSettings.open();
               }}>
               <Text style={styles.textStyle}>Change my settings</Text>
             </TouchableHighlight>
