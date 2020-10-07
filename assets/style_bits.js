@@ -1,4 +1,4 @@
-import {Dimensions, Easing} from 'react-native';
+import {Dimensions, Easing, Platform} from 'react-native';
 
 export const fullWidth = Dimensions.get('window').width;
 export const fullHeight = Dimensions.get('window').height;
@@ -10,3 +10,5 @@ export const tailColor = '#2c2f36';
 export const skyColor = '#4F8EDB';
 export const darkSkyColor = '#2D4B72';
 export const animationTimingFunction = Easing.bezier(0.645, 0.045, 0.355, 1);
+export const mainFontFamily = 'OrangeSlices';
+export const darkSkyFontFamily = 'OrangeSlicesOutline';

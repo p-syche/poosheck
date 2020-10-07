@@ -65,8 +65,10 @@ const AppComponents = () => {
   };
 
   const setTemperatures = (response, latitude, longitude) => {
-    setCurrentTemp(response.main.temp);
-    setfeelsLike(response.main.feels_like);
+    const roundedTemperature = Math.round(response.main.temp);
+    const roundedFeelsLike = Math.round(response.main.feels_like);
+    setCurrentTemp(roundedTemperature);
+    setfeelsLike(roundedFeelsLike);
     setTempMax(response.main.temp_max);
     setTempMin(response.main.temp_min);
     if (getSunriseAndSunsetTime(latitude, longitude) === 'day') {
@@ -84,8 +86,6 @@ const AppComponents = () => {
           setTemperatures(response, 54.44, 18.57);
         });
       } else {
-        console.log('hey ho RESPONSE', latestLocation);
-
         openWeatherRequest(
           latestLocation.latitude,
           latestLocation.longitude,
@@ -120,6 +120,7 @@ const AppComponents = () => {
         tempMax={tempMax}
         tempMin={tempMin}
         feelsLike={feelsLike}
+        isThemeLight={isThemeLight}
       />
       {!isThemeLight && <Stars />}
       <Mountain />
