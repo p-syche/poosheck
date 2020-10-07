@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text, Modal, TouchableHighlight} from 'react-native';
 import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import OpenAppSettings from 'react-native-app-settings';
 
-export default function DenyLocationModal() {
-  const [modalVisible, setModalVisible] = useState(false);
-
+export default function DenyLocationModal({modalVisible, setModalVisible}) {
   return (
     <Modal animationType="slide" transparent={true} visible={modalVisible}>
       <View style={styles.modalView}>
@@ -39,6 +37,7 @@ export default function DenyLocationModal() {
 const styles = StyleSheet.create({
   modalView: {
     margin: 20,
+    marginTop: 50,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,

@@ -1,4 +1,12 @@
-export const openWeatherApiKey = '3aba1f69c738f0432b848ba71ad84e40';
+import {NativeModules, Platform} from 'react-native';
+
+const openWeatherApiKey = '3aba1f69c738f0432b848ba71ad84e40';
+
+const deviceLanguage =
+  Platform.OS === 'ios'
+    ? NativeModules.SettingsManager.settings.AppleLocale ||
+      NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
+    : NativeModules.I18nManager.localeIdentifier;
 
 export const openWeatherRequest = (latitude, longitude) => {
   return fetch(
@@ -7,10 +15,13 @@ export const openWeatherRequest = (latitude, longitude) => {
       '&lon=' +
       longitude +
       '&units=metric&appid=' +
-      openWeatherApiKey,
+      openWeatherApiKey +
+      '&lang=' +
+      deviceLanguage,
   )
     .then((response) => response.json())
     .then((json) => {
+      console.log('the weather is....:', json);
       return json;
     })
     .catch((error) => {
