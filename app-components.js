@@ -16,6 +16,7 @@ import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import {getSunriseAndSunsetTime} from './constants/settings';
+import Snow from 'react-native-snow';
 
 const AppComponents = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,6 +25,7 @@ const AppComponents = () => {
   const [tempMin, setTempMin] = useState(20);
   const [tempMax, setTempMax] = useState(20);
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
+  const [isSnowing, setIsSnowing] = useState(false);
 
   useEffect(() => {
     RNLocation.checkPermission({
@@ -82,13 +84,21 @@ const AppComponents = () => {
     RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
       if (latestLocation === null) {
         setModalVisible(true);
-        openWeatherRequest(54.44, 18.57).then((response) => {
-          setTemperatures(response, 54.44, 18.57);
-        });
+        // Sopot
+        // openWeatherRequest(54.44, 18.57).then((response) => {
+        //   setTemperatures(response, 54.44, 18.57);
+        // });
+        // Antarctica
+        openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
+          (response) => {
+            setTemperatures(response, 54.44, 18.57);
+          },
+        );
       } else {
         openWeatherRequest(
           latestLocation.latitude,
           latestLocation.longitude,
+          setVisibleWeather,
         ).then((response) => {
           setTemperatures(
             response,
@@ -108,6 +118,14 @@ const AppComponents = () => {
     }
   };
 
+  const setVisibleWeather = (descriptionCode) => {
+    if (descriptionCode === 'Snow' || descriptionCode === 'Clouds') {
+      setIsSnowing(true);
+    } else {
+      console.log('and the weather CODE IS!!!', descriptionCode);
+    }
+  };
+
   return (
     <SafeAreaView
       style={{...styles.container, backgroundColor: displaySkyColor()}}>
@@ -123,6 +141,7 @@ const AppComponents = () => {
         isThemeLight={isThemeLight}
       />
       {!isThemeLight && <Stars />}
+      {isSnowing && <Snow snowfall="medium" />}
       <Mountain />
       <Husky />
     </SafeAreaView>

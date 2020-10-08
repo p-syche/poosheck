@@ -5542,7 +5542,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5606,6 +5606,13 @@ react-native-location@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-location/-/react-native-location-2.5.0.tgz#b6d2f7e9c3dbe13fbe87587f9533b8bf943b6a35"
   integrity sha512-myT54tZuFmN6d5RruMVfoa8eY+voJWkSd73xUVhjzJDnQr5uu5MFoH7hMg3trHF1CAkaY/2gIneOspUdGxv59Q==
+
+react-native-snow@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-snow/-/react-native-snow-0.2.0.tgz#bbf13fc7e627d07d1ab6eb174ed8dd2886f75a81"
+  integrity sha512-cI58rlOUlu1W4nB4c+ItkAy4DS9Eh9QMUk8T/uFQYVq8omP2sxKzPXS1E7jo2FxWLcdajCeXzPB237+FheHphw==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-svg@^12.1.0:
   version "12.1.0"

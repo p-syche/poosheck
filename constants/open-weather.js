@@ -8,7 +8,7 @@ const deviceLanguage =
       NativeModules.SettingsManager.settings.AppleLanguages[0] // iOS 13
     : NativeModules.I18nManager.localeIdentifier;
 
-export const openWeatherRequest = (latitude, longitude) => {
+export const openWeatherRequest = (latitude, longitude, setVisibleWeather) => {
   return fetch(
     'http://api.openweathermap.org/data/2.5/weather?lat=' +
       latitude +
@@ -21,7 +21,8 @@ export const openWeatherRequest = (latitude, longitude) => {
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log('the weather is....:', json);
+      // console.log('the weather is....:', json);
+      setVisibleWeather(json.weather[0].main);
       return json;
     })
     .catch((error) => {
