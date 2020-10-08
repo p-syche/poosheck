@@ -15,7 +15,6 @@ import Stars from './stars/stars';
 import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
-import {getSunriseAndSunsetTime} from './constants/settings';
 import Snow from 'react-native-snow';
 
 const AppComponents = () => {
@@ -73,7 +72,8 @@ const AppComponents = () => {
     setfeelsLike(roundedFeelsLike);
     setTempMax(response.main.temp_max);
     setTempMin(response.main.temp_min);
-    if (getSunriseAndSunsetTime(latitude, longitude) === 'day') {
+    const weatherIcon = response.weather[0].icon;
+    if (weatherIcon.includes('d')) {
       setIsThemeLight(true);
     } else {
       setIsThemeLight(false);
@@ -85,15 +85,21 @@ const AppComponents = () => {
       if (latestLocation === null) {
         setModalVisible(true);
         // Sopot
-        // openWeatherRequest(54.44, 18.57).then((response) => {
-        //   setTemperatures(response, 54.44, 18.57);
-        // });
+        openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
+          setTemperatures(response, 54.44, 18.57);
+        });
         // Antarctica
-        openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
-          (response) => {
-            setTemperatures(response, 54.44, 18.57);
-          },
-        );
+        // openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
+        //   (response) => {
+        //     setTemperatures(response, 54.44, 18.57);
+        //   },
+        // );
+        // Tokyo
+        // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
+        //   (response) => {
+        //     setTemperatures(response, 54.44, 18.57);
+        //   },
+        // );
       } else {
         openWeatherRequest(
           latestLocation.latitude,

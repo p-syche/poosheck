@@ -15,8 +15,7 @@
     "react-native-app-settings": "^2.0.1",
     "react-native-location": "^2.5.0",
     "react-native-snow": "^0.2.0",
-    "react-native-svg": "^12.1.0",
-    "sunrise-sunset-js": "^2.1.2"
+    "react-native-svg": "^12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
