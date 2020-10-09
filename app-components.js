@@ -4,6 +4,7 @@ import {StyleSheet, View, SafeAreaView, AppState} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
+import Clouds from './weather/clouds';
 import Stars from './stars/stars';
 import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
@@ -164,6 +165,7 @@ const AppComponents = () => {
       />
       {!isThemeLight && <Stars />}
       {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}
+      {weatherConditions === 'Clouds' ? <Clouds /> : null}
       <Mountain />
       <Husky />
     </SafeAreaView>
