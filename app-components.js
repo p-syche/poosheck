@@ -24,7 +24,7 @@ const AppComponents = () => {
   const [tempMin, setTempMin] = useState(20);
   const [tempMax, setTempMax] = useState(20);
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
-  const [isSnowing, setIsSnowing] = useState(false);
+  const [weatherConditions, setWeatherConditions] = useState('Clear');
 
   useEffect(() => {
     RNLocation.checkPermission({
@@ -125,11 +125,7 @@ const AppComponents = () => {
   };
 
   const setVisibleWeather = (descriptionCode) => {
-    if (descriptionCode === 'Snow' || descriptionCode === 'Clouds') {
-      setIsSnowing(true);
-    } else {
-      console.log('and the weather CODE IS!!!', descriptionCode);
-    }
+    setWeatherConditions(descriptionCode);
   };
 
   return (
@@ -147,7 +143,7 @@ const AppComponents = () => {
         isThemeLight={isThemeLight}
       />
       {!isThemeLight && <Stars />}
-      {isSnowing && <Snow snowfall="medium" />}
+      {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}
       <Mountain />
       <Husky />
     </SafeAreaView>
