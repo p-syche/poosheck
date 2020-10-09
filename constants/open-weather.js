@@ -22,6 +22,8 @@ export const openWeatherRequest = (latitude, longitude, setVisibleWeather) => {
     .then((response) => response.json())
     .then((json) => {
       // console.log('the weather is....:', json);
+      console.log('the weather is....:', json.weather[0].main);
+      console.log('the weather is....:', json.weather);
       setVisibleWeather(json.weather[0].main);
       return json;
     })

@@ -1,13 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import RNLocation from 'react-native-location';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Modal,
-  TouchableHighlight,
-  SafeAreaView,
-} from 'react-native';
+import {StyleSheet, View, SafeAreaView, AppState} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
@@ -18,6 +11,9 @@ import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
 
 const AppComponents = () => {
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [currentTemp, setCurrentTemp] = useState(20);
   const [feelsLike, setfeelsLike] = useState(20);
@@ -27,6 +23,30 @@ const AppComponents = () => {
   const [weatherConditions, setWeatherConditions] = useState('Clear');
 
   useEffect(() => {
+    AppState.addEventListener('change', _handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', _handleAppStateChange);
+    };
+  }, []);
+
+  const _handleAppStateChange = (nextAppState) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      checkPermission();
+    }
+
+    appState.current = nextAppState;
+    setAppStateVisible(appState.current);
+  };
+
+  useEffect(() => {
+    checkPermission();
+  }, []);
+
+  const checkPermission = () => {
     RNLocation.checkPermission({
       ios: 'whenInUse', // or 'always'
       android: {
@@ -39,7 +59,7 @@ const AppComponents = () => {
         getLatestLocation();
       }
     });
-  }, []);
+  };
 
   const requestPermission = () => {
     RNLocation.requestPermission({
