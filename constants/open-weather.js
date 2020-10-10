@@ -10,21 +10,22 @@ const deviceLanguage =
 
 export const openWeatherRequest = (latitude, longitude, setVisibleWeather) => {
   return fetch(
-    'http://api.openweathermap.org/data/2.5/weather?lat=' +
+    'https://api.openweathermap.org/data/2.5/onecall?lat=' +
       latitude +
       '&lon=' +
       longitude +
       '&units=metric&appid=' +
       openWeatherApiKey +
       '&lang=' +
-      deviceLanguage,
+      deviceLanguage +
+      '&exclude=minutely,hourly,alerts',
   )
     .then((response) => response.json())
     .then((json) => {
-      // console.log('the weather is....:', json);
-      console.log('the weather is....:', json.weather[0].main);
-      console.log('the weather is....:', json.weather);
-      setVisibleWeather(json.weather[0].main);
+      console.log('the TIMEZONE is....:', json.timezone);
+      // console.log('the DAILY weather is....:', json.daily[0]);
+      console.log('the VISIBlE weather is....:', json.daily[0].weather[0].main);
+      setVisibleWeather(json.daily[0].weather[0].main);
       return json;
     })
     .catch((error) => {

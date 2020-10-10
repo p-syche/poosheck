@@ -16,12 +16,15 @@ const AppComponents = () => {
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [avgTemp, setAvgTemp] = useState(20);
   const [currentTemp, setCurrentTemp] = useState(20);
   const [feelsLike, setfeelsLike] = useState(20);
   const [tempMin, setTempMin] = useState(20);
   const [tempMax, setTempMax] = useState(20);
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
   const [weatherConditions, setWeatherConditions] = useState('Clear');
+  const [cloudPercentage, setCloudPercentage] = useState(50);
+  const [windSpeed, setWindSpeed] = useState(1);
 
   useEffect(() => {
     AppState.addEventListener('change', _handleAppStateChange);
@@ -86,19 +89,26 @@ const AppComponents = () => {
     });
   };
 
-  const setTemperatures = (response, latitude, longitude) => {
-    const roundedTemperature = Math.round(response.main.temp);
-    const roundedFeelsLike = Math.round(response.main.feels_like);
-    setCurrentTemp(roundedTemperature);
-    setfeelsLike(roundedFeelsLike);
-    setTempMax(response.main.temp_max);
-    setTempMin(response.main.temp_min);
-    const weatherIcon = response.weather[0].icon;
+  const setTemperatures = (response) => {
+    let averageTemp;
+
+    const weatherIcon = response.current.weather[0].icon;
     if (weatherIcon.includes('d')) {
       setIsThemeLight(true);
+      setAvgTemp(Math.round(response.daily[0].temp.day));
     } else {
       setIsThemeLight(false);
+      setAvgTemp(Math.round(response.daily[0].temp.night));
     }
+
+    setTempMax(response.daily[0].temp.max);
+    setTempMin(response.daily[0].temp.min);
+
+    const currentRoundedTemperature = Math.round(response.current.temp);
+    setCurrentTemp(currentRoundedTemperature);
+
+    setCloudPercentage(response.daily[0].clouds);
+    setWindSpeed(response.daily[0].wind_speed);
   };
 
   const getLatestLocation = () => {
@@ -106,21 +116,31 @@ const AppComponents = () => {
       if (latestLocation === null) {
         setModalVisible(true);
         // Sopot
-        openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
-          setTemperatures(response, 54.44, 18.57);
-        });
+        // openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
+        //   setTemperatures(response);
+        // });
         // Antarctica
         // openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
         //   (response) => {
-        //     setTemperatures(response, 54.44, 18.57);
+        //     setTemperatures(response);
         //   },
         // );
         // Tokyo
         // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
         //   (response) => {
-        //     setTemperatures(response, 54.44, 18.57);
+        //     setTemperatures(response);
         //   },
         // );
+        // Rio de Janeiro
+        // openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then((response) => {
+        //   setTemperatures(response, 54.44, 18.57);
+        // });
+        // New York
+        openWeatherRequest(40.73, -73.935242, setVisibleWeather).then(
+          (response) => {
+            setTemperatures(response);
+          },
+        );
       } else {
         openWeatherRequest(
           latestLocation.latitude,
@@ -157,15 +177,17 @@ const AppComponents = () => {
         setModalVisible={setModalVisible}
       />
       <Temperature
+        avgTemp={avgTemp}
         currentTemp={currentTemp}
         tempMax={tempMax}
         tempMin={tempMin}
-        feelsLike={feelsLike}
         isThemeLight={isThemeLight}
       />
       {!isThemeLight && <Stars />}
       {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}
-      {weatherConditions === 'Clouds' ? <Clouds /> : null}
+      {weatherConditions === 'Clouds' ? (
+        <Clouds cloudPercentage={cloudPercentage} windSpeed={windSpeed} />
+      ) : null}
       <Mountain />
       <Husky />
     </SafeAreaView>

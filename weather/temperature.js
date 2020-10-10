@@ -8,8 +8,8 @@ import {
 } from '../assets/style_bits';
 
 const Temperature = ({
+  avgTemp,
   currentTemp,
-  feelsLike,
   tempMin,
   tempMax,
   isThemeLight,
@@ -29,9 +29,17 @@ const Temperature = ({
 
   return (
     <View style={{position: 'absolute', top: 50, alignContent: 'center'}}>
-      <Text style={{...customFontStyles, marginBottom: 20}}>
-        {currentTemp}&deg;C
-      </Text>
+      <View style={{display: 'flex', flexDirection: 'row', marginBottom: 20}}>
+        <Text
+          style={{
+            ...customFontStylesNoOutline,
+            fontSize: 16,
+            alignSelf: 'flex-end',
+          }}>
+          Average:{'  '}
+        </Text>
+        <Text style={{...customFontStyles}}>{avgTemp}&deg;C</Text>
+      </View>
       <View
         style={{
           borderTopWidth: 1,
@@ -43,19 +51,52 @@ const Temperature = ({
         }}
       />
       <View style={{display: 'flex', flexDirection: 'row'}}>
-        <Text style={{...customFontStylesNoOutline, fontSize: 18}}>
-          Feels like:{'  '}
+        <Text
+          style={{
+            ...customFontStylesNoOutline,
+            fontSize: 16,
+            alignSelf: 'flex-end',
+          }}>
+          Currently:{'  '}
         </Text>
         <Text style={{...customFontStyles, fontSize: 23}}>
-          {feelsLike}&deg;C
+          {currentTemp}&deg;C
         </Text>
       </View>
-      <View style={{display: 'flex', flexDirection: 'row'}}>
-        <Text style={{...customFontStylesNoOutline, fontSize: 16}}>Min: </Text>
-        <Text style={{...customFontStyles, fontSize: 16}}>{tempMin}&deg;C</Text>
-        <Text style={{...customFontStyles, fontSize: 16}}> | </Text>
-        <Text style={{...customFontStylesNoOutline, fontSize: 16}}>Max: </Text>
-        <Text style={{...customFontStyles, fontSize: 16}}>{tempMax}&deg;C</Text>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+        }}>
+        <Text
+          style={{
+            ...customFontStylesNoOutline,
+            fontSize: 14,
+            alignSelf: 'flex-end',
+          }}>
+          Min:{' '}
+        </Text>
+        <Text
+          style={{...customFontStyles, fontSize: 16, alignSelf: 'flex-end'}}>
+          {tempMin}&deg;C
+        </Text>
+        <Text
+          style={{...customFontStyles, fontSize: 18, alignSelf: 'flex-end'}}>
+          {' '}
+          |{' '}
+        </Text>
+        <Text
+          style={{
+            ...customFontStylesNoOutline,
+            fontSize: 14,
+            alignSelf: 'flex-end',
+          }}>
+          Max:{' '}
+        </Text>
+        <Text
+          style={{...customFontStyles, fontSize: 16, alignSelf: 'flex-end'}}>
+          {tempMax}&deg;C
+        </Text>
       </View>
     </View>
   );
