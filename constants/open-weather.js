@@ -22,9 +22,9 @@ export const openWeatherRequest = (latitude, longitude, setVisibleWeather) => {
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log('the TIMEZONE is....:', json.timezone);
+      // console.log('the TIMEZONE is....:', json.timezone);
       // console.log('the DAILY weather is....:', json.daily[0]);
-      console.log('the VISIBlE weather is....:', json.daily[0].weather[0].main);
+      // console.log('the CURRENT weather is....:', json.current);
       setVisibleWeather(json.daily[0].weather[0].main);
       return json;
     })

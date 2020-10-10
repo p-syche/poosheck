@@ -6,12 +6,14 @@ import {
   mainFontFamily,
   darkSkyFontFamily,
 } from '../assets/style_bits';
+import WeatherIcon from './weather-icon';
 
 const Temperature = ({
   avgTemp,
   currentTemp,
   tempMin,
   tempMax,
+  currentWeatherIcon,
   isThemeLight,
 }) => {
   const customFontFamily = isThemeLight ? mainFontFamily : darkSkyFontFamily;
@@ -29,16 +31,35 @@ const Temperature = ({
 
   return (
     <View style={{position: 'absolute', top: 50, alignContent: 'center'}}>
-      <View style={{display: 'flex', flexDirection: 'row', marginBottom: 20}}>
-        <Text
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          marginBottom: 20,
+          justifyContent: 'space-between',
+          alignContent: 'flex-end',
+        }}>
+        <View
           style={{
-            ...customFontStylesNoOutline,
-            fontSize: 16,
-            alignSelf: 'flex-end',
+            display: 'flex',
+            flexDirection: 'row',
+            alignContent: 'flex-end',
           }}>
-          Average:{'  '}
-        </Text>
-        <Text style={{...customFontStyles}}>{avgTemp}&deg;C</Text>
+          <Text
+            style={{
+              ...customFontStylesNoOutline,
+              fontSize: 16,
+              alignSelf: 'flex-end',
+            }}>
+            Average:{'  '}
+          </Text>
+          <Text style={{...customFontStyles, alignSelf: 'flex-end'}}>
+            {avgTemp}&deg;C
+          </Text>
+        </View>
+        <View style={{marginLeft: 'auto'}}>
+          <WeatherIcon currentWeatherIcon={currentWeatherIcon} />
+        </View>
       </View>
       <View
         style={{

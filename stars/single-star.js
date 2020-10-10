@@ -7,7 +7,7 @@ import {
   animationTimingFunction,
 } from '../assets/style_bits';
 import {shuffledStars} from './star-coords';
-import {Svg, Path, Polygon, Circle} from 'react-native-svg';
+import {Circle} from 'react-native-svg';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
