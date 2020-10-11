@@ -1,6 +1,12 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import RNLocation from 'react-native-location';
 import AppComponents from './app-components';
+import SettingsScreen from './settings';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   useEffect(() => {
@@ -25,5 +31,12 @@ export default function App() {
     });
   }, []);
 
-  return <AppComponents />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" headerMode="none">
+        <Stack.Screen name="Home" component={AppComponents} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }

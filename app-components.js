@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import RNLocation from 'react-native-location';
-import {StyleSheet, View, SafeAreaView, AppState} from 'react-native';
+import {StyleSheet, View, SafeAreaView, AppState, Button} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
@@ -11,14 +11,13 @@ import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
 
-const AppComponents = () => {
+const AppComponents = ({navigation}) => {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [avgTemp, setAvgTemp] = useState(20);
   const [currentTemp, setCurrentTemp] = useState(20);
-  const [feelsLike, setfeelsLike] = useState(20);
   const [tempMin, setTempMin] = useState(20);
   const [tempMax, setTempMax] = useState(20);
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
@@ -200,6 +199,10 @@ const AppComponents = () => {
       {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}
       <Mountain />
       <Husky />
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate('Settings')}
+      />
     </SafeAreaView>
   );
 };
