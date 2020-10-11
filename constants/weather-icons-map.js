@@ -36,7 +36,6 @@ export const weatherIconsMap = (currentWeatherIcon) => {
       break;
     default:
       iconRequire = require('../assets/transparent.png');
-      break;
   }
   return iconRequire;
 };

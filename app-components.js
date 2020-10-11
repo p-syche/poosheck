@@ -96,12 +96,12 @@ const AppComponents = ({navigation}) => {
     if (weatherIcon.includes('d')) {
       setIsThemeLight(true);
       setAvgTemp(Math.round(response.daily[0].temp.day));
+      setCurrentWeatherIcon(weatherIcon.substring(0, 2) + 'd');
     } else {
       setIsThemeLight(false);
       setAvgTemp(Math.round(response.daily[0].temp.night));
+      setCurrentWeatherIcon(weatherIcon.substring(0, 2) + 'n');
     }
-
-    setCurrentWeatherIcon(response.current.weather[0].icon);
 
     setTempMax(response.daily[0].temp.max);
     setTempMin(response.daily[0].temp.min);
@@ -118,9 +118,9 @@ const AppComponents = ({navigation}) => {
       if (latestLocation === null) {
         setModalVisible(true);
         // Sopot
-        openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
-          setTemperatures(response);
-        });
+        // openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
+        //   setTemperatures(response);
+        // });
         // Antarctica
         // openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
         //   (response) => {
@@ -128,11 +128,11 @@ const AppComponents = ({navigation}) => {
         //   },
         // );
         // Tokyo
-        // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
-        //   (response) => {
-        //     setTemperatures(response);
-        //   },
-        // );
+        openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
+          (response) => {
+            setTemperatures(response);
+          },
+        );
         // Rio de Janeiro
         // openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then(
         //   (response) => {

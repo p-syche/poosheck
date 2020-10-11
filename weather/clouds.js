@@ -76,6 +76,7 @@ const Clouds = ({isThemeLight, cloudPercentage, windSpeed}) => {
         left: -150,
         alignContent: 'center',
       }}>
+      <Text style={{fontSize: 32, color: '#ffffff'}}>YO! CLOUDS!!!!</Text>
       <Animated.View
         style={[styles.cloud1, {transform: [{translateX: moveCloud}]}]}>
         <SingleCloud />
