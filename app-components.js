@@ -1,11 +1,22 @@
 import React, {useRef, useState, useEffect} from 'react';
 import RNLocation from 'react-native-location';
-import {StyleSheet, View, SafeAreaView, AppState, Button} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  AppState,
+  TouchableOpacity,
+  Image,
+  Text,
+  Pressable,
+  Button,
+} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
 import Clouds from './weather/clouds';
 import Stars from './stars/stars';
+import SettingsIconButton from './background-components/settings-icon-button';
 import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
@@ -93,14 +104,15 @@ const AppComponents = ({navigation}) => {
     let averageTemp;
 
     const weatherIcon = response.current.weather[0].icon;
+    const averageWeatherIcon = response.daily[0].weather[0].icon;
     if (weatherIcon.includes('d')) {
       setIsThemeLight(true);
       setAvgTemp(Math.round(response.daily[0].temp.day));
-      setCurrentWeatherIcon(weatherIcon.substring(0, 2) + 'd');
+      setCurrentWeatherIcon(averageWeatherIcon.substring(0, 2) + 'd');
     } else {
       setIsThemeLight(false);
       setAvgTemp(Math.round(response.daily[0].temp.night));
-      setCurrentWeatherIcon(weatherIcon.substring(0, 2) + 'n');
+      setCurrentWeatherIcon(averageWeatherIcon.substring(0, 2) + 'n');
     }
 
     setTempMax(response.daily[0].temp.max);
@@ -128,17 +140,17 @@ const AppComponents = ({navigation}) => {
         //   },
         // );
         // Tokyo
-        openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
-          (response) => {
-            setTemperatures(response);
-          },
-        );
-        // Rio de Janeiro
-        // openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then(
+        // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
         //   (response) => {
-        //     setTemperatures(response, 54.44, 18.57);
+        //     setTemperatures(response);
         //   },
         // );
+        // Rio de Janeiro
+        openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then(
+          (response) => {
+            setTemperatures(response, 54.44, 18.57);
+          },
+        );
         // New York
         // openWeatherRequest(40.73, -73.935242, setVisibleWeather).then(
         //   (response) => {
@@ -199,10 +211,7 @@ const AppComponents = ({navigation}) => {
       {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}
       <Mountain />
       <Husky />
-      <Button
-        title="Go to Settings"
-        onPress={() => navigation.navigate('Settings')}
-      />
+      <SettingsIconButton navigation={navigation} />
     </SafeAreaView>
   );
 };
