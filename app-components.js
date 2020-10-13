@@ -5,11 +5,7 @@ import {
   View,
   SafeAreaView,
   AppState,
-  TouchableOpacity,
-  Image,
-  Text,
-  Pressable,
-  Button,
+  ScrollView,
 } from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
@@ -21,6 +17,12 @@ import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
+
+const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};
 
 const AppComponents = ({navigation}) => {
   const appState = useRef(AppState.currentState);
@@ -35,7 +37,7 @@ const AppComponents = ({navigation}) => {
   const [weatherConditions, setWeatherConditions] = useState('Clear');
   const [cloudPercentage, setCloudPercentage] = useState(50);
   const [windSpeed, setWindSpeed] = useState(1);
-  const [currentWeatherIcon, setCurrentWeatherIcon] = useState('01d');
+  const [currentWeatherIcon, setCurrentWeatherIcon] = useState('');
 
   useEffect(() => {
     AppState.addEventListener('change', _handleAppStateChange);
@@ -187,7 +189,10 @@ const AppComponents = ({navigation}) => {
 
   return (
     <SafeAreaView
-      style={{...styles.container, backgroundColor: displaySkyColor()}}>
+      style={{
+        ...styles.container,
+        backgroundColor: displaySkyColor(),
+      }}>
       <DenyLocationModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}

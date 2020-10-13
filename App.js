@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import RNLocation from 'react-native-location';
 import AppComponents from './app-components';
 import SettingsScreen from './settings';
+import RefreshAppWrapper from './refresh-wrapper';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +35,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" headerMode="none">
-        <Stack.Screen name="Home" component={AppComponents} />
+        <Stack.Screen name="Home" component={RefreshAppWrapper} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
