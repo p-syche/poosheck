@@ -18,13 +18,7 @@ import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
 
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
-
-const AppComponents = ({navigation}) => {
+const AppComponents = ({navigation, refreshing}) => {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
 

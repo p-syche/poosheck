@@ -14,7 +14,7 @@ const wait = (timeout) => {
   });
 };
 
-const RefreshAppWrapper = () => {
+const RefreshAppWrapper = ({navigation}) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
@@ -30,7 +30,7 @@ const RefreshAppWrapper = () => {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <AppComponents />
+        <AppComponents onRefresh={onRefresh} navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -43,9 +43,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    backgroundColor: 'pink',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
