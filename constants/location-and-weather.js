@@ -1,21 +1,7 @@
 import RNLocation from 'react-native-location';
+import AsyncStorage from '@react-native-community/async-storage';
 
-export const checkPermission = () => {
-  RNLocation.checkPermission({
-    ios: 'whenInUse',
-    android: {
-      detail: 'fine',
-    },
-  }).then((currentPermission) => {
-    if (currentPermission === false) {
-      requestPermission();
-    } else {
-      getLatestLocation();
-    }
-  });
-};
-
-const requestPermission = () => {
+export const requestPermission = () => {
   RNLocation.requestPermission({
     ios: 'whenInUse',
     android: {
@@ -29,12 +15,12 @@ const requestPermission = () => {
     },
   }).then((currentPermission) => {
     if (currentPermission === false) {
-      setModalVisible(true);
-      openWeatherRequest(54.44, 18.57).then((response) => {
-        setTemperatures(response);
-      });
+      // setModalVisible(true);
+      // openWeatherRequest(54.44, 18.57).then((response) => {
+      //   setTemperatures(response);
+      // });
     } else {
-      getLatestLocation();
+      getLocationData();
     }
   });
 };
@@ -64,52 +50,66 @@ export const setTemperatures = (response) => {
   setWindSpeed(response.daily[0].wind_speed);
 };
 
-const getLatestLocation = () => {
-  RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
-    if (latestLocation === null) {
-      // setModalVisible(true);
-      // Sopot
-      // openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
-      //   setTemperatures(response);
-      // });
-      // Antarctica
-      // openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
-      //   (response) => {
-      //     setTemperatures(response);
-      //   },
-      // );
-      // Tokyo
-      // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
-      //   (response) => {
-      //     setTemperatures(response);
-      //   },
-      // );
-      // Rio de Janeiro
-      openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then(
-        (response) => {
-          setTemperatures(response, 54.44, 18.57);
-        },
-      );
-      // New York
-      // openWeatherRequest(40.73, -73.935242, setVisibleWeather).then(
-      //   (response) => {
-      //     setTemperatures(response);
-      //   },
-      // );
+const getLocationData = async () => {
+  try {
+    const jsonValue = await AsyncStorage.getItem('@poosheck_last_location');
+    if (jsonValue != null) {
+      console.log('I want to see the saved locations', jsonValue);
+      return JSON.parse(jsonValue);
     } else {
-      openWeatherRequest(
-        latestLocation.latitude,
-        latestLocation.longitude,
-        setVisibleWeather,
-      ).then((response) => {
-        setTemperatures(
-          response,
-          latestLocation.latitude,
-          latestLocation.longitude,
-        );
-      });
+      return getCurrentLocation();
     }
+  } catch (e) {
+    // error reading value
+  }
+};
+
+const storeLocationData = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('@poosheck_last_location', jsonValue);
+  } catch (e) {
+    // saving error
+  }
+};
+
+export const getCurrentLocationPromise = (location) => {
+  return new Promise((resolve) => {
+    getCurrentLocation(resolve);
   });
+};
+
+export const getCurrentLocation = (resolve) => {
+  RNLocation.getLatestLocation({timeout: 1000})
+    .then((latestLocation) => {
+      let location = {};
+      console.log('heeeey, what????', latestLocation);
+      if (latestLocation === null) {
+        location = {latitude: -90, longitude: -139.2667};
+
+        // setModalVisible(true);
+      } else {
+        location = latestLocation;
+        // openWeatherRequest(
+        //   latestLocation.latitude,
+        //   latestLocation.longitude,
+        //   setVisibleWeather,
+        // ).then((response) => {
+        //   setTemperatures(
+        //     response,
+        //     latestLocation.latitude,
+        //     latestLocation.longitude,
+        //   );
+        // });
+      }
+      return location;
+    })
+    .then((location) => {
+      console.log('what is the location?');
+      storeLocationData(location).then(() => {
+        resolve(location);
+      });
+    });
 };
 
 const displaySkyColor = () => {

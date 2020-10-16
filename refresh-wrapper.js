@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ScrollView,
   RefreshControl,
@@ -7,20 +7,43 @@ import {
   SafeAreaView,
 } from 'react-native';
 import AppComponents from './app-components';
-
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
+import RNLocation from 'react-native-location';
+import AsyncStorage from '@react-native-community/async-storage';
+import {
+  requestPermission,
+  getLatestLocation,
+  getCurrentLocationPromise,
+  getLocationData,
+} from './constants/location-and-weather';
 
 const RefreshAppWrapper = ({navigation}) => {
+  const [savedLocation, setSavedLocation] = useState();
+
+  const checkPermission = () => {
+    RNLocation.checkPermission({
+      ios: 'whenInUse',
+      android: {
+        detail: 'fine',
+      },
+    }).then((currentPermission) => {
+      if (currentPermission === false) {
+        return requestPermission();
+      } else {
+        return getLocationData();
+      }
+    });
+  };
+
+  useEffect(() => {
+    checkPermission();
+  }, []);
+
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    wait(2000).then(() => setRefreshing(false));
+    getCurrentLocationPromise().then(() => setRefreshing(false));
   }, []);
 
   return (

@@ -46,31 +46,31 @@ const AppComponents = ({navigation, refreshing}) => {
       appState.current.match(/inactive|background/) &&
       nextAppState === 'active'
     ) {
-      checkPermission();
+      // checkPermission();
     }
 
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
   };
 
-  useEffect(() => {
-    checkPermission();
-  }, []);
+  // useEffect(() => {
+  //   checkPermission();
+  // }, []);
 
-  const checkPermission = () => {
-    RNLocation.checkPermission({
-      ios: 'whenInUse', // or 'always'
-      android: {
-        detail: 'fine', // or 'fine'
-      },
-    }).then((currentPermission) => {
-      if (currentPermission === false) {
-        requestPermission();
-      } else {
-        getLatestLocation();
-      }
-    });
-  };
+  // const checkPermission = () => {
+  //   RNLocation.checkPermission({
+  //     ios: 'whenInUse', // or 'always'
+  //     android: {
+  //       detail: 'fine', // or 'fine'
+  //     },
+  //   }).then((currentPermission) => {
+  //     if (currentPermission === false) {
+  //       requestPermission();
+  //     } else {
+  //       getLatestLocation();
+  //     }
+  //   });
+  // };
 
   const requestPermission = () => {
     RNLocation.requestPermission({
