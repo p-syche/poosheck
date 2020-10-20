@@ -1,50 +1,102 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   ScrollView,
   RefreshControl,
   StyleSheet,
   Text,
   SafeAreaView,
+  AppState,
 } from 'react-native';
 import AppComponents from './app-components';
 import RNLocation from 'react-native-location';
 import AsyncStorage from '@react-native-community/async-storage';
 import {
-  requestPermission,
   getLatestLocation,
   getCurrentLocationPromise,
   getLocationData,
+  getPermissionPromise,
 } from './constants/location-and-weather';
+import {openWeatherRequest} from './constants/open-weather';
 
 const RefreshAppWrapper = ({navigation}) => {
   const [savedLocation, setSavedLocation] = useState();
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+
+  const [weatherConditions, setWeatherConditions] = useState('Clear');
+  const [weatherResponse, setWeatherResponse] = useState({});
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      checkPermission();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  useEffect(() => {
+    AppState.addEventListener('change', _handleAppStateChange);
+
+    return () => {
+      AppState.removeEventListener('change', _handleAppStateChange);
+    };
+  }, []);
+
+  const _handleAppStateChange = (nextAppState) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      checkPermission();
+    }
+
+    appState.current = nextAppState;
+    setAppStateVisible(appState.current);
+  };
 
   const checkPermission = () => {
     RNLocation.checkPermission({
-      ios: 'whenInUse',
+      ios: 'whenInUse', // or 'always'
       android: {
-        detail: 'fine',
+        detail: 'coarse', // or 'fine'
       },
     }).then((currentPermission) => {
       if (currentPermission === false) {
-        return requestPermission();
+        return getPermissionPromise().then((permission) => {
+          if ((permission = true)) {
+            checkWeatherBasedOnLocation();
+          } else {
+            // display error modal
+          }
+        });
       } else {
-        return getLocationData();
+        return checkWeatherBasedOnLocation();
       }
     });
   };
-
-  useEffect(() => {
-    checkPermission();
-  }, []);
 
   const [refreshing, setRefreshing] = React.useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    getCurrentLocationPromise().then(() => setRefreshing(false));
+    getCurrentLocationPromise().then(() => {
+      checkWeatherBasedOnLocation();
+      setRefreshing(false);
+    });
   }, []);
+
+  const checkWeatherBasedOnLocation = (location) => {
+    getLocationData().then((location) => {
+      openWeatherRequest(
+        location.latitude,
+        location.longitude,
+        setWeatherConditions,
+      ).then((response) => {
+        setWeatherResponse(response);
+      });
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,7 +105,11 @@ const RefreshAppWrapper = ({navigation}) => {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <AppComponents onRefresh={onRefresh} navigation={navigation} />
+        <AppComponents
+          onRefresh={onRefresh}
+          navigation={navigation}
+          weatherResponse={weatherResponse}
+        />
       </ScrollView>
     </SafeAreaView>
   );

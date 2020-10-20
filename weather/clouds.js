@@ -3,7 +3,7 @@ import {StyleSheet, View, Animated, Easing} from 'react-native';
 import {fullRelativeWidth, skyColor} from '../assets/style_bits';
 import SingleCloud from './single-cloud';
 
-const Clouds = ({isThemeLight, cloudPercentage, windSpeed}) => {
+const Clouds = ({isThemeLight}) => {
   const customFontColor = isThemeLight ? '#000000' : '#ffffff';
   const moveCloud = useRef(new Animated.Value(0)).current;
   const moveCloud2 = useRef(new Animated.Value(0)).current;
@@ -11,7 +11,7 @@ const Clouds = ({isThemeLight, cloudPercentage, windSpeed}) => {
   const moveCloud4 = useRef(new Animated.Value(0)).current;
   const moveCloud5 = useRef(new Animated.Value(0)).current;
 
-  const cloudSpeed = 20000 / windSpeed;
+  const cloudSpeed = 4000;
 
   useEffect(() => {
     Animated.loop(

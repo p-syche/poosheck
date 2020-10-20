@@ -1,12 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import RNLocation from 'react-native-location';
-import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  AppState,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, View, SafeAreaView, ScrollView} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
@@ -18,10 +12,7 @@ import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
 
-const AppComponents = ({navigation, refreshing}) => {
-  const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
-
+const AppComponents = ({navigation, refreshing, weatherResponse}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [avgTemp, setAvgTemp] = useState(20);
   const [currentTemp, setCurrentTemp] = useState(20);
@@ -29,144 +20,34 @@ const AppComponents = ({navigation, refreshing}) => {
   const [tempMax, setTempMax] = useState(20);
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
   const [weatherConditions, setWeatherConditions] = useState('Clear');
-  const [cloudPercentage, setCloudPercentage] = useState(50);
-  const [windSpeed, setWindSpeed] = useState(1);
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState('');
 
   useEffect(() => {
-    AppState.addEventListener('change', _handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener('change', _handleAppStateChange);
-    };
-  }, []);
-
-  const _handleAppStateChange = (nextAppState) => {
-    if (
-      appState.current.match(/inactive|background/) &&
-      nextAppState === 'active'
-    ) {
-      // checkPermission();
+    if (weatherResponse.current !== undefined) {
+      setTemperatures(weatherResponse);
     }
-
-    appState.current = nextAppState;
-    setAppStateVisible(appState.current);
-  };
-
-  // useEffect(() => {
-  //   checkPermission();
-  // }, []);
-
-  // const checkPermission = () => {
-  //   RNLocation.checkPermission({
-  //     ios: 'whenInUse', // or 'always'
-  //     android: {
-  //       detail: 'fine', // or 'fine'
-  //     },
-  //   }).then((currentPermission) => {
-  //     if (currentPermission === false) {
-  //       requestPermission();
-  //     } else {
-  //       getLatestLocation();
-  //     }
-  //   });
-  // };
-
-  const requestPermission = () => {
-    RNLocation.requestPermission({
-      ios: 'whenInUse',
-      android: {
-        detail: 'coarse',
-        rationale: {
-          title: 'We need to access your location',
-          message: 'We use your location to show you the weather in your area',
-          buttonPositive: 'OK',
-          buttonNegative: 'Cancel',
-        },
-      },
-    }).then((currentPermission) => {
-      if (currentPermission === false) {
-        setModalVisible(true);
-        openWeatherRequest(54.44, 18.57).then((response) => {
-          setTemperatures(response);
-        });
-      } else {
-        getLatestLocation();
-      }
-    });
-  };
+  }, [weatherResponse]);
 
   const setTemperatures = (response) => {
     let averageTemp;
 
     const weatherIcon = response.current.weather[0].icon;
-    const averageWeatherIcon = response.daily[0].weather[0].icon;
+    const averageWeatherIcon = response.daily.weather[0].icon;
     if (weatherIcon.includes('d')) {
       setIsThemeLight(true);
-      setAvgTemp(Math.round(response.daily[0].temp.day));
+      setAvgTemp(Math.round(response.daily.temp.day));
       setCurrentWeatherIcon(averageWeatherIcon.substring(0, 2) + 'd');
     } else {
       setIsThemeLight(false);
-      setAvgTemp(Math.round(response.daily[0].temp.night));
+      setAvgTemp(Math.round(response.daily.temp.night));
       setCurrentWeatherIcon(averageWeatherIcon.substring(0, 2) + 'n');
     }
 
-    setTempMax(response.daily[0].temp.max);
-    setTempMin(response.daily[0].temp.min);
+    setTempMax(response.daily.temp.max);
+    setTempMin(response.daily.temp.min);
 
     const currentRoundedTemperature = Math.round(response.current.temp);
     setCurrentTemp(currentRoundedTemperature);
-
-    setCloudPercentage(response.daily[0].clouds);
-    setWindSpeed(response.daily[0].wind_speed);
-  };
-
-  const getLatestLocation = () => {
-    RNLocation.getLatestLocation({timeout: 1000}).then((latestLocation) => {
-      if (latestLocation === null) {
-        setModalVisible(true);
-        // Sopot
-        // openWeatherRequest(54.44, 18.57, setVisibleWeather).then((response) => {
-        //   setTemperatures(response);
-        // });
-        // Antarctica
-        // openWeatherRequest(-90, -139.2667, setVisibleWeather).then(
-        //   (response) => {
-        //     setTemperatures(response);
-        //   },
-        // );
-        // Tokyo
-        // openWeatherRequest(35.652832, 139.839478, setVisibleWeather).then(
-        //   (response) => {
-        //     setTemperatures(response);
-        //   },
-        // );
-        // Rio de Janeiro
-        openWeatherRequest(-22.908333, -43.196388, setVisibleWeather).then(
-          (response) => {
-            setTemperatures(response, 54.44, 18.57);
-          },
-        );
-        // New York
-        // openWeatherRequest(40.73, -73.935242, setVisibleWeather).then(
-        //   (response) => {
-        //     setTemperatures(response);
-        //   },
-        // );
-      } else {
-        openWeatherRequest(
-          latestLocation.latitude,
-          latestLocation.longitude,
-          setVisibleWeather,
-        ).then((response) => {
-          setTemperatures(
-            response,
-            latestLocation.latitude,
-            latestLocation.longitude,
-          );
-        });
-      }
-    });
   };
 
   const displaySkyColor = () => {
@@ -175,10 +56,6 @@ const AppComponents = ({navigation, refreshing}) => {
     } else {
       return darkSkyColor;
     }
-  };
-
-  const setVisibleWeather = (descriptionCode) => {
-    setWeatherConditions(descriptionCode);
   };
 
   return (
@@ -192,11 +69,7 @@ const AppComponents = ({navigation, refreshing}) => {
         setModalVisible={setModalVisible}
       />
       {weatherConditions === 'Clouds' ? (
-        <Clouds
-          isThemeLight={isThemeLight}
-          cloudPercentage={cloudPercentage}
-          windSpeed={windSpeed}
-        />
+        <Clouds isThemeLight={isThemeLight} />
       ) : null}
       <Temperature
         avgTemp={avgTemp}
