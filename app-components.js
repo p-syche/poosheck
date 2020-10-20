@@ -48,6 +48,8 @@ const AppComponents = ({
       setCurrentWeatherIcon(averageWeatherIcon.substring(0, 2) + 'n');
     }
 
+    setWeatherConditions(response.daily.weather[0].main);
+
     setTempMax(response.daily.temp.max);
     setTempMin(response.daily.temp.min);
 

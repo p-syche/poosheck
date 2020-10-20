@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PoosheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PoosheckTests.m */; };
+		129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -16,13 +17,16 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PoosheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PoosheckTests.m */; };
 		4599937DB895BFB81B4447B1 /* libPods-Poosheck-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1C9AB7A6FBC51A9EF904B6 /* libPods-Poosheck-tvOSTests.a */; };
+		5F1DE85D5D064F6BAD566694 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		839163256D73F43756D4FDC9 /* libPods-Poosheck-PoosheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1567C4E8434F84D758A9F65D /* libPods-Poosheck-PoosheckTests.a */; };
 		A4946F2F8F04C669C2680DED /* libPods-Poosheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D092E892E55D2F65CF95E3 /* libPods-Poosheck.a */; };
 		E6383C8155E81F88B2A3DC9E /* libPods-Poosheck-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445BDEC9764182196084B78E /* libPods-Poosheck-tvOS.a */; };
+		EA935BFD253F0AB600591B97 /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
+		EA935BFE253F0AB600591B97 /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
+		EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
+		EA935C01253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
 		EAE92CC825234A0A007669DD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE92CC725234A0A007669DD /* CoreLocation.framework */; };
-		129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */; };
-		5F1DE85D5D064F6BAD566694 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,13 +70,15 @@
 		7B16CC0F402246779E851D12 /* Pods-Poosheck-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOSTests/Pods-Poosheck-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Poosheck/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		907CEBE6E76DD43FD1770B54 /* Pods-Poosheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck/Pods-Poosheck.debug.xcconfig"; sourceTree = "<group>"; };
+		95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OrangeSlices.otf; path = ../assets/fonts/OrangeSlices.otf; sourceTree = "<group>"; };
 		D322F295BBCFC3DEFD5AB314 /* Pods-Poosheck-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOS/Pods-Poosheck-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D32BDA5ACA1E1B0E9348BBB7 /* Pods-Poosheck-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOSTests/Pods-Poosheck-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OrangeSlicesOutline.otf; path = ../assets/fonts/OrangeSlicesOutline.otf; sourceTree = "<group>"; };
+		EA935BFC253F0AB600591B97 /* OrangeSlices.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OrangeSlices.otf; path = ../assets/fonts/OrangeSlices.otf; sourceTree = "<group>"; };
+		EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OrangeSlicesOutline.otf; path = ../assets/fonts/OrangeSlicesOutline.otf; sourceTree = "<group>"; };
 		EAE92CC725234A0A007669DD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */ = {isa = PBXFileReference; name = "OrangeSlices.otf"; path = "../assets/fonts/OrangeSlices.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */ = {isa = PBXFileReference; name = "OrangeSlicesOutline.otf"; path = "../assets/fonts/OrangeSlicesOutline.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				EA935BFC253F0AB600591B97 /* OrangeSlices.otf */,
+				EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */,
 				13B07FAE1A68108700A75B9A /* Poosheck */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PoosheckTests */,
@@ -191,6 +199,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		97F4524168E6454DBDE641E4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */,
+				DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		A63C236ABB6633EB8AC32ED5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,16 +222,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		97F4524168E6454DBDE641E4 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */,
-				DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -352,6 +359,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA935BFE253F0AB600591B97 /* OrangeSlices.otf in Resources */,
+				EA935C01253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,10 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA935BFD253F0AB600591B97 /* OrangeSlices.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */,
 				5F1DE85D5D064F6BAD566694 /* OrangeSlicesOutline.otf in Resources */,
+				EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

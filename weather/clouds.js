@@ -11,7 +11,7 @@ const Clouds = ({isThemeLight}) => {
   const moveCloud4 = useRef(new Animated.Value(0)).current;
   const moveCloud5 = useRef(new Animated.Value(0)).current;
 
-  const cloudSpeed = 4000;
+  const cloudSpeed = 7500;
 
   useEffect(() => {
     Animated.loop(
@@ -76,7 +76,6 @@ const Clouds = ({isThemeLight}) => {
         left: -150,
         alignContent: 'center',
       }}>
-      <Text style={{fontSize: 32, color: '#ffffff'}}>YO! CLOUDS!!!!</Text>
       <Animated.View
         style={[styles.cloud1, {transform: [{translateX: moveCloud}]}]}>
         <SingleCloud />

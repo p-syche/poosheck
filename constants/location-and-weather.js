@@ -30,7 +30,7 @@ export const getLocationData = async () => {
     if (jsonValue != null) {
       return JSON.parse(jsonValue);
     } else {
-      return getCurrentLocation();
+      return getCurrentLocationPromise();
     }
   } catch (e) {
     alert(
