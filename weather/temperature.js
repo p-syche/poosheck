@@ -15,6 +15,7 @@ const Temperature = ({
   tempMax,
   currentWeatherIcon,
   isThemeLight,
+  temperatureUnit,
 }) => {
   const customFontFamily = isThemeLight ? mainFontFamily : darkSkyFontFamily;
   const customFontColor = isThemeLight ? '#000000' : '#ffffff';
@@ -54,7 +55,7 @@ const Temperature = ({
             Average:{'  '}
           </Text>
           <Text style={{...customFontStyles, alignSelf: 'flex-end'}}>
-            {avgTemp}&deg;C
+            {avgTemp}&deg;{temperatureUnit}
           </Text>
         </View>
         <View style={{marginLeft: 'auto'}}>
@@ -81,7 +82,7 @@ const Temperature = ({
           Currently:{'  '}
         </Text>
         <Text style={{...customFontStyles, fontSize: 23}}>
-          {currentTemp}&deg;C
+          {currentTemp}&deg;{temperatureUnit}
         </Text>
       </View>
       <View
@@ -99,7 +100,7 @@ const Temperature = ({
         </Text>
         <Text
           style={{...customFontStyles, fontSize: 16, alignSelf: 'flex-end'}}>
-          {tempMin}&deg;C
+          {tempMin}&deg;{temperatureUnit}
         </Text>
         <Text
           style={{...customFontStyles, fontSize: 18, alignSelf: 'flex-end'}}>
@@ -116,7 +117,7 @@ const Temperature = ({
         </Text>
         <Text
           style={{...customFontStyles, fontSize: 16, alignSelf: 'flex-end'}}>
-          {tempMax}&deg;C
+          {tempMax}&deg;{temperatureUnit}
         </Text>
       </View>
     </View>

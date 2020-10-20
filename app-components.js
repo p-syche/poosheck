@@ -12,7 +12,12 @@ import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
 
-const AppComponents = ({navigation, refreshing, weatherResponse}) => {
+const AppComponents = ({
+  navigation,
+  refreshing,
+  weatherResponse,
+  temperatureUnit,
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [avgTemp, setAvgTemp] = useState(20);
   const [currentTemp, setCurrentTemp] = useState(20);
@@ -78,6 +83,7 @@ const AppComponents = ({navigation, refreshing, weatherResponse}) => {
         tempMin={tempMin}
         currentWeatherIcon={currentWeatherIcon}
         isThemeLight={isThemeLight}
+        temperatureUnit={temperatureUnit}
       />
       {!isThemeLight && <Stars />}
       {weatherConditions === 'Snow' ? <Snow snowfall="medium" /> : null}

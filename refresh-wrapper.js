@@ -17,6 +17,7 @@ import {
   getPermissionPromise,
 } from './constants/location-and-weather';
 import {openWeatherRequest} from './constants/open-weather';
+import {getTemperatureUnitPromise} from './constants/settings';
 
 const RefreshAppWrapper = ({navigation}) => {
   const [savedLocation, setSavedLocation] = useState();
@@ -26,9 +27,18 @@ const RefreshAppWrapper = ({navigation}) => {
   const [weatherConditions, setWeatherConditions] = useState('Clear');
   const [weatherResponse, setWeatherResponse] = useState({});
 
+  const [temperatureUnit, setTemperatureUnit] = useState('C');
+
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       checkPermission();
+      getTemperatureUnitPromise().then((unit) => {
+        if (unit === 'Metric') {
+          setTemperatureUnit('C');
+        } else {
+          setTemperatureUnit('F');
+        }
+      });
     });
 
     return unsubscribe;
@@ -109,6 +119,7 @@ const RefreshAppWrapper = ({navigation}) => {
           onRefresh={onRefresh}
           navigation={navigation}
           weatherResponse={weatherResponse}
+          temperatureUnit={temperatureUnit}
         />
       </ScrollView>
     </SafeAreaView>
