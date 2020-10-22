@@ -6,6 +6,9 @@ Inspired by this article: https://tympanus.net/Tutorials/AnimatedAnimals/index.h
 
 Inspired in turn by this dribbble: https://dribbble.com/shots/2418721-Husky-love
 
+![Poosheck at night](https://github.com/p-syche/poosheck/blob/master/assets/presentation_gifs/poosheck.gif)
+![Sunny Poosheck](https://github.com/p-syche/poosheck/blob/master/assets/presentation_gifs/poosheck_day.gif)
+
 ## How to run
 
 Feel free to clone or fork this repo. Once you have it you can use either
@@ -39,3 +42,4 @@ In order to display the current weather, Poosheck asks the Open Weather API: htt
 - A better localization
 - Reading the weather out loud
 - Connect the app to Google Assistant
+
