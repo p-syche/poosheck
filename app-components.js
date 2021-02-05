@@ -19,10 +19,10 @@ const AppComponents = ({
   temperatureUnit,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [avgTemp, setAvgTemp] = useState(20);
-  const [currentTemp, setCurrentTemp] = useState(20);
-  const [tempMin, setTempMin] = useState(20);
-  const [tempMax, setTempMax] = useState(20);
+  const [avgTemp, setAvgTemp] = useState('--');
+  const [currentTemp, setCurrentTemp] = useState('--');
+  const [tempMin, setTempMin] = useState('--');
+  const [tempMax, setTempMax] = useState('--');
   const [isThemeLight, setIsThemeLight] = useState(skyColor);
   const [weatherConditions, setWeatherConditions] = useState('Clear');
   const [currentWeatherIcon, setCurrentWeatherIcon] = useState('');
