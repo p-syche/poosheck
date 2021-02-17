@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import RNLocation from 'react-native-location';
-import {StyleSheet, View, SafeAreaView, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 import Mountain from './background-components/mountain';
 import Husky from './husky';
 import Temperature from './weather/temperature';
@@ -11,6 +11,7 @@ import {fullRelativeWidth, skyColor, darkSkyColor} from './assets/style_bits';
 import {openWeatherRequest} from './constants/open-weather';
 import DenyLocationModal from './deny-location-modal';
 import Snow from 'react-native-snow';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const AppComponents = ({
   navigation,
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 30,
   },
 });
 

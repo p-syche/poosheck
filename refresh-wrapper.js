@@ -4,7 +4,6 @@ import {
   RefreshControl,
   StyleSheet,
   Text,
-  SafeAreaView,
   AppState,
 } from 'react-native';
 import AppComponents from './app-components';
@@ -18,6 +17,7 @@ import {
 } from './constants/location-and-weather';
 import {openWeatherRequest} from './constants/open-weather';
 import {getTemperatureUnitPromise} from './constants/settings';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const RefreshAppWrapper = ({navigation}) => {
   const [savedLocation, setSavedLocation] = useState();
@@ -109,28 +109,22 @@ const RefreshAppWrapper = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView
-        contentContainerStyle={styles.scrollView}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
-        <AppComponents
-          onRefresh={onRefresh}
-          navigation={navigation}
-          weatherResponse={weatherResponse}
-          temperatureUnit={temperatureUnit}
-        />
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView
+      contentContainerStyle={styles.scrollView}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
+      <AppComponents
+        onRefresh={onRefresh}
+        navigation={navigation}
+        weatherResponse={weatherResponse}
+        temperatureUnit={temperatureUnit}
+      />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0,
-  },
   scrollView: {
     flex: 1,
   },

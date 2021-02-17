@@ -72,7 +72,7 @@ const Clouds = ({isThemeLight}) => {
     <View
       style={{
         position: 'absolute',
-        top: 0,
+        top: 30,
         left: -150,
         alignContent: 'center',
       }}>
