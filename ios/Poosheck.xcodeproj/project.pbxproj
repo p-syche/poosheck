@@ -17,12 +17,10 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PoosheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PoosheckTests.m */; };
 		4599937DB895BFB81B4447B1 /* libPods-Poosheck-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1C9AB7A6FBC51A9EF904B6 /* libPods-Poosheck-tvOSTests.a */; };
-		5F1DE85D5D064F6BAD566694 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		839163256D73F43756D4FDC9 /* libPods-Poosheck-PoosheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1567C4E8434F84D758A9F65D /* libPods-Poosheck-PoosheckTests.a */; };
 		A4946F2F8F04C669C2680DED /* libPods-Poosheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D092E892E55D2F65CF95E3 /* libPods-Poosheck.a */; };
 		E6383C8155E81F88B2A3DC9E /* libPods-Poosheck-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445BDEC9764182196084B78E /* libPods-Poosheck-tvOS.a */; };
-		EA935BFD253F0AB600591B97 /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
 		EA935BFE253F0AB600591B97 /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
 		EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
 		EA935C01253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
@@ -368,11 +366,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA935BFD253F0AB600591B97 /* OrangeSlices.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */,
-				5F1DE85D5D064F6BAD566694 /* OrangeSlicesOutline.otf in Resources */,
 				EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,7 +403,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
