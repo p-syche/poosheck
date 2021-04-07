@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PoosheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PoosheckTests.m */; };
-		129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = 95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -21,8 +20,9 @@
 		839163256D73F43756D4FDC9 /* libPods-Poosheck-PoosheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1567C4E8434F84D758A9F65D /* libPods-Poosheck-PoosheckTests.a */; };
 		A4946F2F8F04C669C2680DED /* libPods-Poosheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D092E892E55D2F65CF95E3 /* libPods-Poosheck.a */; };
 		E6383C8155E81F88B2A3DC9E /* libPods-Poosheck-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 445BDEC9764182196084B78E /* libPods-Poosheck-tvOS.a */; };
+		EA1446C6261DAB65002A6F3E /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
+		EA1446CB261DAB68002A6F3E /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
 		EA935BFE253F0AB600591B97 /* OrangeSlices.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFC253F0AB600591B97 /* OrangeSlices.otf */; };
-		EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
 		EA935C01253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */; };
 		EAE92CC825234A0A007669DD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE92CC725234A0A007669DD /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -68,10 +68,8 @@
 		7B16CC0F402246779E851D12 /* Pods-Poosheck-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOSTests/Pods-Poosheck-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Poosheck/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		907CEBE6E76DD43FD1770B54 /* Pods-Poosheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck/Pods-Poosheck.debug.xcconfig"; sourceTree = "<group>"; };
-		95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OrangeSlices.otf; path = ../assets/fonts/OrangeSlices.otf; sourceTree = "<group>"; };
 		D322F295BBCFC3DEFD5AB314 /* Pods-Poosheck-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOS/Pods-Poosheck-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D32BDA5ACA1E1B0E9348BBB7 /* Pods-Poosheck-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poosheck-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Poosheck-tvOSTests/Pods-Poosheck-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OrangeSlicesOutline.otf; path = ../assets/fonts/OrangeSlicesOutline.otf; sourceTree = "<group>"; };
 		EA935BFC253F0AB600591B97 /* OrangeSlices.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OrangeSlices.otf; path = ../assets/fonts/OrangeSlices.otf; sourceTree = "<group>"; };
 		EA935BFF253F0ABF00591B97 /* OrangeSlicesOutline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OrangeSlicesOutline.otf; path = ../assets/fonts/OrangeSlicesOutline.otf; sourceTree = "<group>"; };
 		EAE92CC725234A0A007669DD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -200,8 +198,6 @@
 		97F4524168E6454DBDE641E4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				95748A2EB8F0482BABEDEF34 /* OrangeSlices.otf */,
-				DC7ED619CE26402A8A62A70E /* OrangeSlicesOutline.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -233,6 +229,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				965A043FE353A850AFE83078 /* [CP] Copy Pods Resources */,
+				A29F50258D87BED70009056F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,6 +252,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				4879294A663AB2916821DC87 /* [CP] Copy Pods Resources */,
+				5AFE004074CDC8B3231188DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,10 +364,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1446CB261DAB68002A6F3E /* OrangeSlicesOutline.otf in Resources */,
+				EA1446C6261DAB65002A6F3E /* OrangeSlices.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				129353F0CBE04032B3BE88AC /* OrangeSlices.otf in Resources */,
-				EA935C00253F0ABF00591B97 /* OrangeSlicesOutline.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +457,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5AFE004074CDC8B3231188DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Poosheck/Pods-Poosheck-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Poosheck/Pods-Poosheck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		88F7BD08A016F383F7FD9144 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +535,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Poosheck-PoosheckTests/Pods-Poosheck-PoosheckTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A29F50258D87BED70009056F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Poosheck-PoosheckTests/Pods-Poosheck-PoosheckTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Poosheck-PoosheckTests/Pods-Poosheck-PoosheckTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EADA3A45BA0F53C4D7838D14 /* [CP] Check Pods Manifest.lock */ = {
