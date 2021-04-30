@@ -32,7 +32,7 @@ const RefreshAppWrapper = ({navigation}) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       checkPermission();
-      getTemperatureUnitPromise().then((unit) => {
+      getTemperatureUnitPromise().then(unit => {
         if (unit === 'Metric') {
           setTemperatureUnit('C');
         } else {
@@ -52,7 +52,7 @@ const RefreshAppWrapper = ({navigation}) => {
     };
   }, []);
 
-  const _handleAppStateChange = (nextAppState) => {
+  const _handleAppStateChange = nextAppState => {
     if (
       appState.current.match(/inactive|background/) &&
       nextAppState === 'active'
@@ -70,9 +70,9 @@ const RefreshAppWrapper = ({navigation}) => {
       android: {
         detail: 'coarse', // or 'fine'
       },
-    }).then((currentPermission) => {
+    }).then(currentPermission => {
       if (currentPermission === false) {
-        return getPermissionPromise().then((permission) => {
+        return getPermissionPromise().then(permission => {
           if ((permission = true)) {
             checkWeatherBasedOnLocation();
           } else {
@@ -96,15 +96,13 @@ const RefreshAppWrapper = ({navigation}) => {
     });
   }, []);
 
-  const checkWeatherBasedOnLocation = (location) => {
-    getLocationData().then((location) => {
-      openWeatherRequest(
-        location.latitude,
-        location.longitude,
-        setWeatherConditions,
-      ).then((response) => {
-        setWeatherResponse(response);
-      });
+  const checkWeatherBasedOnLocation = location => {
+    getLocationData().then(location => {
+      openWeatherRequest(40.73, -73.935242, setWeatherConditions).then(
+        response => {
+          setWeatherResponse(response);
+        },
+      );
     });
   };
 
