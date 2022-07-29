@@ -42,4 +42,5 @@ In order to display the current weather, Poosheck asks the Open Weather API: htt
 - A better localization
 - Reading the weather out loud
 - Connect the app to Google Assistant
+- other cool stuff :)
 
